@@ -1,0 +1,53 @@
+﻿@model IEnumerable<CarSharing.Models.CarModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="display-4">Cars: </h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Add new car</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CarMark)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Availability)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CarMark)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Availability)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {id=item.CarId}, new {@class = "btn btn-success"}) 
+                @Html.ActionLink("Details", "Details", new { id=item.CarId }, new {@class = "btn btn-info"}) 
+                @Html.ActionLink("Delete", "Delete", new {id=item.CarId}, new {@class = "btn btn-danger"})
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
