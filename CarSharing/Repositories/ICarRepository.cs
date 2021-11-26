@@ -9,6 +9,8 @@ namespace CarSharing.Repositories
     public interface ICarRepository
     {
         CarModel Get(int carId);
+        IQueryable<CarModel> GetAllActive();
+
         
 
         void Add(CarModel car);

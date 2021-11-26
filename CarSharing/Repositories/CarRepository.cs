@@ -34,7 +34,11 @@ namespace CarSharing.Repositories
         public CarModel Get(int carId)
                 => _context.cars.SingleOrDefault(x => x.CarId == carId);
 
-       
+        public IQueryable<CarModel> GetAllActive()
+            => _context.cars.Where(x => x.Availability);
+
+      
+
 
         public void Update(int carId, CarModel car)
         {
